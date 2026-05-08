@@ -1,0 +1,5 @@
+streamlit
+mysql-connector-python
+PyPDF2
+huggingface_hub
+python-dotenv

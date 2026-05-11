@@ -20,14 +20,12 @@ def db_connect():
         port=3306
     )
 
-# Persistent storage for notes
 if 'notes' not in st.session_state:
     st.session_state['notes'] = ""
 
 st.title('AI Notes Generator')
 menu = st.sidebar.selectbox('Menu', ["Register", "Login"])
 
-# --- DB LOGIC ---
 if menu == "Register":
     u = st.text_input("Username")
     p = st.text_input("Password", type='password')
@@ -48,9 +46,9 @@ if menu == "Login":
         if c.fetchone():
             st.session_state['u'] = u
             st.success("Logged in!")
-        else: st.error("Invalid")
-
-# --- CORE APP ---
+        else: st.e
+            rror("Invalid")
+            
 if "u" in st.session_state:
     f = st.file_uploader("Upload PDF", type=['pdf'])
     if f:
@@ -60,7 +58,7 @@ if "u" in st.session_state:
         if st.button("Generate AI Notes"):
             with st.spinner("AI is working..."):
                 try:
-                    # Using the most stable direct API call possible
+                   
                     response = client.text_generation(
                         model="mistralai/Mistral-7B-Instruct-v0.3",
                         prompt = f"Make concise notes from the following notes:\n{text[:3000]}",
